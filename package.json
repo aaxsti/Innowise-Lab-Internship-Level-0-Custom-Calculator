@@ -1,0 +1,29 @@
+{
+  "name": "innowise-lab-internship-level-0-custom-calculator",
+  "version": "1.0.0",
+  "description": "custom calculator",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaxsti/Innowise-Lab-Internship-Level-0-Custom-Calculator.git"
+  },
+  "author": "Maxim Astapenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaxsti/Innowise-Lab-Internship-Level-0-Custom-Calculator/issues"
+  },
+  "homepage": "https://github.com/aaxsti/Innowise-Lab-Internship-Level-0-Custom-Calculator#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^5.2.6",
+    "html-webpack-plugin": "^5.3.2",
+    "style-loader": "^3.1.0",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

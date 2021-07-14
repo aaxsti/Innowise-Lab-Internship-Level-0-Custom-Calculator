@@ -1,0 +1,94 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #48494a;
+}
+
+.app-wrapper {
+    margin-top: 140px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    /*min-height: 100vh;*/
+    grid-template-columns: repeat(8, 100px);
+    /*grid-template-rows: minmax(120px, auto) repeat(4, 100px);*/
+}
+
+.app-wrapper > button {
+    color: #eaeaea;
+    max-height: 58px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid #393939;
+    outline: none;
+    background-color: #48494a;
+}
+
+/*.app-wrapper #app-info {*/
+/*    background-color: #4a6ca7;*/
+/*}*/
+
+button[main-operation] {
+    background-color: olivedrab;
+}
+
+button[data-equals] {
+    background-color: olivedrab;
+}
+
+.app-wrapper[data-number] {
+    background-color: #5a5b5c;
+}
+
+.app-wrapper > button:hover {
+    background-color: #787878;
+}
+
+.two-columns {
+    grid-column: span 2;
+}
+
+.three-columns {
+    grid-column: span 3;
+}
+
+.display {
+    height: 150px;
+    color: white;
+    grid-column: 1 / -1;
+    background-color: #4c4c4c;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+    margin-bottom: 1px;
+}
+
+.display #memory {
+    color: #bdbdbd;
+    font-size: 1.5rem;
+}
+
+.display #prev-operand {
+    color: whitesmoke;
+    font-size: 1.5rem;
+}
+
+.display #curr-operand {
+    color: whitesmoke;
+    font-size: 2.5rem;
+}
+
+#app-info {
+    background-color: #406e6f;
+}
