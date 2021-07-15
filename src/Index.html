@@ -1,13 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Custom Calculator</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator App</title>
 </head>
 <body>
 <div class="app-wrapper">
+
     <div class="display">
         <div id="calc-memory"></div>
         <div id="prev-operand"></div>
@@ -24,36 +26,42 @@
     <button data-read-memory>MR</button>
     <button data-single-operation>e<sup>x</sup></button>
     <button data-single-operation>10<sup>x</sup></button>
-    <button data-number>7</button>
-    <button data-number>8</button>
-    <button data-number>9</button>
+    <button data-number class="number">7</button>
+    <button data-number class="number">8</button>
+    <button data-number class="number">9</button>
     <button data-main-operation class="main-operation">*</button>
 
     <button data-add-value-to-memory>M+</button>
     <button data-sub-value-from-memory>M-</button>
     <button data-single-operation>ln</button>
     <button data-single-operation>log<sub>10</sub></button>
-    <button data-number>4</button>
-    <button data-number>5</button>
-    <button data-number>6</button>
+    <button data-number class="number">4</button>
+    <button data-number class="number">5</button>
+    <button data-number class="number">6</button>
     <button data-main-operation class="main-operation">-</button>
 
     <button data-single-operation>x²</button>
-    <button data-single-operation>x<sup>3</sup></button>
+    <button data-single-operation>x³</button>
     <button data-single-operation>1/x</button>
     <button data-single-operation>√x</button>
-    <button data-number>1</button>
-    <button data-number>2</button>
-    <button data-number>3</button>
+    <button data-number class="number">1</button>
+    <button data-number class="number">2</button>
+    <button data-number class="number">3</button>
     <button data-main-operation class="main-operation">+</button>
 
     <button id="app-info">info</button>
     <button data-main-operation>x<sup>y</sup></button>
-    <button data-single-operation>&#8731;x</button>
     <button data-main-operation><sup>y</sup>&#8730;x</button>
-    <button data-number class="two-columns">0</button>
-    <button data-number>.</button>
-    <button data-equals>=</button>
+    <button data-single-operation>&#8731;x</button>
+    <button data-number class="two-columns number">0</button>
+    <button data-number class="number">.</button>
+    <button data-equals class="main-operation">=</button>
+
+    <div id="toggle-container">
+        <input type="checkbox" id="switch" name="theme"/><label for="switch">Toggle</label>
+        <span id="color-mode-header">color mode</span>
+    </div>
+
 </div>
 </body>
 </html>

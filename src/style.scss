@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: normal;
+}
+
+html {
+  --bg: #e3e3e3;
+  --bg-display: #dadada;
+  --bg-buttons: #bdbdc1;
+  --buttons-border: #808080;
+  --bg-buttons-hover: #d6d6d6;
+  --bg-number-buttons: #d5d5da;
+  --bg-main-operations: #3ccf8a;
+  --bg-info-button: #eecf51;
+  --main-color-text: #282828;
+  --memory-display-text: #393939;
+}
+
+html[data-theme='dark']{
+  --bg: #48494a;
+  --bg-display: #4c4c4c;
+  --bg-buttons: #48494a;
+  --buttons-border: #393939;
+  --bg-buttons-hover: #787878;
+  --bg-number-buttons: #5a5b5c;
+  --bg-main-operations: #367d1e;
+  --bg-info-button: #406e6f;
+  --main-color-text: whitesmoke;
+  --memory-display-text: #bdbdbd;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+}
+
+.app-wrapper {
+  margin-top: 160px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(8, 100px);
+}
+
+.app-wrapper > button {
+  color: var(--main-color-text);
+  max-height: 58px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid var(--buttons-border);
+  outline: none;
+  background-color: var(--bg-buttons);
+}
+
+button.main-operation {
+  background-color: var(--bg-main-operations);
+}
+
+.app-wrapper .number {
+  background-color: var(--bg-number-buttons);
+}
+
+.app-wrapper > button:hover {
+  background-color: var(--bg-buttons-hover);
+}
+
+.two-columns {
+  grid-column: span 2;
+}
+
+.three-columns {
+  grid-column: span 3;
+}
+
+.display {
+  height: 150px;
+  color: whitesmoke;
+  grid-column: 1 / -1;
+  background-color: var(--bg-display);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+  margin-bottom: 1px;
+}
+
+.display #memory {
+  color: var(--memory-display-text);
+  font-size: 1.5rem;
+}
+
+.display #prev-operand {
+  color: var(--main-color-text);
+  font-size: 1.5rem;
+}
+
+.display #curr-operand {
+  color: var(--main-color-text);
+  font-size: 2.5rem;
+}
+
+#app-info {
+  background-color: var(--bg-info-button);
+}
+
+#toggle-container {
+  margin-top: 20px;
+  display: flex;
+  width: 200px;
+  align-items: center;
+}
+
+#color-mode-header {
+  color: var(--main-color-text);
+  padding-left: 15px;
+  font-size: 1.1rem;
+}
+
+// TOGGLE SWITCH
+input[type=checkbox]{
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 60px;
+  height: 35px;
+  background: var(--bg-main-operations);
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 30px;
+  height: 30px;
+  background: var(--bg);
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: var(--bg-main-operations);
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 45px;
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0s !important;
+}

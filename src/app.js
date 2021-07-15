@@ -1,72 +1,46 @@
-import './style.css';
+import './style.scss';
 import Calculator from "./calculator";
+import {mapEvent, trans} from "./utils";
 
 // Getting DOM elements
-const infoButton = document.getElementById('app-info');
-
-const numberButtons = document.querySelectorAll('[data-number]');
-const mainOperationButtons = document.querySelectorAll('[data-main-operation]');
-const equalButton = document.querySelector('[data-equals]');
-const allClearButton = document.querySelector('[data-clear-all]');
-const deleteButton = document.querySelector('[data-delete]');
-
-const singleOperationButtons = document.querySelectorAll('[data-single-operation]');
-const changeSign = document.querySelector('[data-change-sign]');
-
 const prevOperand = document.getElementById('prev-operand');
 const currOperand = document.getElementById('curr-operand');
 const calcMemory = document.getElementById('calc-memory');
+
+const numberButtons = document.querySelectorAll('[data-number]');
+const mainOperationButtons = document.querySelectorAll('[data-main-operation]');
+const singleOperationButtons = document.querySelectorAll('[data-single-operation]');
+
+const equalButton = document.querySelector('[data-equals]');
+const allClearButton = document.querySelector('[data-clear-all]');
+const deleteButton = document.querySelector('[data-delete]');
+const changeSign = document.querySelector('[data-change-sign]');
 
 const readMemory = document.querySelector('[data-read-memory]');
 const addValueToMemory = document.querySelector('[data-add-value-to-memory]');
 const subMemoryFromValue = document.querySelector('[data-sub-value-from-memory]');
 const clearMemory = document.querySelector('[data-clear-memory]');
 
-const calculator = new Calculator(prevOperand, currOperand, calcMemory);
+const infoButton = document.getElementById('app-info');
+
+export const calculator = new Calculator(prevOperand, currOperand, calcMemory);
 
 // Mapping events to elements
-addValueToMemory.addEventListener('click', () => {
-    calculator.addToMemory();
-    calculator.updateDisplay();
-})
+// mapEvent(equalButton, calculator.calculate);
+mapEvent(deleteButton, calculator.delete);
+mapEvent(allClearButton, calculator.clear);
+mapEvent(changeSign, calculator.changeSign);
 
-changeSign.addEventListener('click', () => {
-    calculator.changeSign();
-    calculator.updateDisplay();
-})
-
-singleOperationButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        calculator.singleOperation(btn.innerText);
-        calculator.updateDisplay();
-    })
-})
-
-readMemory.addEventListener('click', () => {
-    calculator.readMemory();
-    calculator.updateDisplay();
-})
-
-clearMemory.addEventListener('click', () => {
-    calculator.clearMemory();
-    calculator.updateDisplay();
-})
+mapEvent(subMemoryFromValue, calculator.subMemory);
+mapEvent(addValueToMemory, calculator.addToMemory);
+mapEvent(clearMemory, calculator.clearMemory);
+mapEvent(readMemory, calculator.readMemory);
 
 equalButton.addEventListener('click', () => {
     calculator.calculate();
     calculator.updateDisplay();
     calculator.resetCalc = true;
 })
-
-subMemoryFromValue.addEventListener('click', () => {
-    calculator.subMemory();
-    calculator.updateDisplay();
-})
-
-deleteButton.addEventListener('click', () => {
-    calculator.delete();
-    calculator.updateDisplay();
-});
 
 numberButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -82,9 +56,29 @@ mainOperationButtons.forEach(btn => {
     })
 })
 
-allClearButton.addEventListener('click', () => {
-    calculator.clear();
-    calculator.updateDisplay();
-});
+singleOperationButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        calculator.singleOperation(btn.innerText);
+        calculator.updateDisplay();
+    })
+})
 
 infoButton.addEventListener('click', () => alert('Calculator app created by Maxim Astapenko'))
+
+
+// COLOR MODE
+
+const checkbox = document.querySelector('input[name=theme]');
+console.log(checkbox)
+document.documentElement.setAttribute('data-theme', 'light');
+checkbox.addEventListener('change', function () {
+    console.log(this)
+    if (this.checked) {
+        trans();
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        trans();
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+})
+
