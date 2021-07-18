@@ -15,7 +15,6 @@ class Calculator {
     }
 
     delete() {
-        debugger
         this.currentOperand = this.currentOperand.toString();
         if (this.currentOperand.length) {
             this.currentOperand = this.currentOperand.slice(0, -1)
@@ -30,9 +29,9 @@ class Calculator {
     changeSign() {
         this.currentOperand = this.currentOperand.toString();
         if (this.currentOperand.includes('-')) {
-            this.currentOperand = this.currentOperand.slice(1)
+            this.currentOperand = this.currentOperand.slice(1);
         } else {
-            this.currentOperand = '-' + this.currentOperand
+            this.currentOperand = '-' + this.currentOperand;
         }
     }
 
@@ -59,15 +58,15 @@ class Calculator {
         this.currentOperand = this.memory;
     }
 
-    singleOperation(operationSingle){
+    singleOperation(operationSingle) {
         let result
         const current = parseFloat(this.currentOperand);
 
-        if(isNaN(current)) return
+        if (isNaN(current)) return
 
         this.operationSingle = operationSingle
 
-        switch(this.operationSingle) {
+        switch (this.operationSingle) {
             case '%':
                 result = current / 100
                 break
@@ -100,12 +99,11 @@ class Calculator {
                 break
         }
 
-        if(this.previousOperand === ''){
+        if (this.previousOperand === '') {
             this.resetCalc = true
         }
 
-        this.currentOperand = isNaN(result) ? 'Error' : result    // Error checks
-        this.singleOperationFlag = true
+        this.currentOperand = isNaN(result) ? 'Error' : result
     }
 
     checkOperation(operation) {
@@ -140,10 +138,11 @@ class Calculator {
                 result = prev ** current;
                 break
             case 'y√x':
-                result = Math.pow(prev, 1/current);
+                if (prev < 0 && current % 2 !== 1) result = NaN;
+                else result = (prev < 0 ? -1 : 1) * Math.pow(Math.abs(prev), 1/current);
                 break
         }
-        this.currentOperand = result;
+        this.currentOperand = ((result === Infinity) || (isNaN(result))) ? 'Error' : result;
         this.operation = undefined;
         this.previousOperand = '';
     }
@@ -176,13 +175,9 @@ class Calculator {
 
         if (this.currentOperand === 'Error') {
             this.currentOperandElement.innerText = this.currentOperand;
-            this.clear()
+            this.clear();
         } else this.currentOperandElement.innerText = this.getDisplayNumber(this.currentOperand);
 
-        if (this.singleOperationFlag === true){
-            this.singleOperationFlag = false
-            return
-        }
 
         if (this.operation != null) {
             this.previousOperandElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`

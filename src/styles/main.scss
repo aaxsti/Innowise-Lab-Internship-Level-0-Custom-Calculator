@@ -1,0 +1,132 @@
+@import "switch-theme";
+
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: normal;
+}
+
+// LIGHT THEME
+html {
+  --bg: #e3e3e3;
+  --bg-display: #dadada;
+  --bg-buttons: #bdbdc1;
+  --buttons-border: #808080;
+  --bg-buttons-hover: #d6d6d6;
+  --bg-buttons-active: #dedede;
+  --bg-number-buttons: #d5d5da;
+  --bg-main-operations: #3ccf8a;
+  --bg-info-button: #78cdcf;
+  --main-color-text: #282828;
+  --memory-display-text: #5a5a5a;
+}
+
+// DARK THEME
+html[data-theme='dark'] {
+  --bg: #48494a;
+  --bg-display: #4c4c4c;
+  --bg-buttons: #48494a;
+  --buttons-border: #393939;
+  --bg-buttons-hover: #787878;
+  --bg-buttons-active: #888888;
+  --bg-number-buttons: #5a5b5c;
+  --bg-main-operations: #367d1e;
+  --bg-info-button: #406e6f;
+  --main-color-text: whitesmoke;
+  --memory-display-text: #bdbdbd;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+}
+
+.app-wrapper {
+  margin-top: 160px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(8, 100px);
+
+  .two-columns {
+    grid-column: span 2;
+  }
+
+  .three-columns {
+    grid-column: span 3;
+  }
+
+  button {
+    color: var(--main-color-text);
+    max-height: 58px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid var(--buttons-border);
+    outline: none;
+    background-color: var(--bg-buttons);
+
+    &:hover {
+      background-color: var(--bg-buttons-hover);
+    }
+
+    &:active {
+      background-color: var(--bg-buttons-active);
+    }
+  }
+
+  .main-operation {
+    background-color: var(--bg-main-operations);
+  }
+
+  .number {
+    background-color: var(--bg-number-buttons);
+  }
+
+  #app-info {
+    background-color: var(--bg-info-button);
+  }
+
+  #toggle-container {
+    margin-top: 20px;
+    display: flex;
+    width: 200px;
+    align-items: center;
+
+    span {
+      color: var(--main-color-text);
+      padding-left: 15px;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.display {
+  height: 150px;
+  grid-column: 1 / -1;
+  background-color: var(--bg-display);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+  margin-bottom: 1px;
+
+  #calc-memory {
+    color: var(--memory-display-text);
+    font-size: 1.5rem;
+  }
+
+  #prev-operand {
+    color: var(--main-color-text);
+    font-size: 1.5rem;
+  }
+
+  #curr-operand {
+    color: var(--main-color-text);
+    font-size: 2.5rem;
+  }
+}
