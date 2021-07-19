@@ -1,11 +1,14 @@
 {
   "name": "innowise-lab-internship-level-0-custom-calculator",
   "version": "1.0.0",
+  "homepage": "https://aaxsti.github.io/Innowise-Lab-Internship-Level-0-Custom-Calculator",
   "description": "custom calculator",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "repository": {
     "type": "git",
@@ -16,10 +19,10 @@
   "bugs": {
     "url": "https://github.com/aaxsti/Innowise-Lab-Internship-Level-0-Custom-Calculator/issues"
   },
-  "homepage": "https://github.com/aaxsti/Innowise-Lab-Internship-Level-0-Custom-Calculator#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.6",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.3.2",
     "sass": "^1.35.2",
     "sass-loader": "^12.1.0",

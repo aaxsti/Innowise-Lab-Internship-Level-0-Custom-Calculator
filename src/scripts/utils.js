@@ -1,6 +1,5 @@
 import {calculator} from "./app";
 
-
 export function mapEvent(element, callback) {
     if (!NodeList.prototype.isPrototypeOf(element)) {
         element.addEventListener('click', () => {
@@ -21,7 +20,7 @@ export function mapEvent(element, callback) {
 export function trans() {
     document.documentElement.classList.add('transition');
     window.setTimeout(() => {
-        document.documentElement.classList.remove('transition')
+        document.documentElement.classList.remove('transition');
     }, 1000)
 }
 

@@ -111,9 +111,13 @@ class Calculator {
         if (this.previousOperand !== '') {
             this.calculate()
         }
-        this.operation = operation
-        this.previousOperand = this.currentOperand
-        this.currentOperand = ''
+
+        if (operation === "xy") this.operation = "^";
+        else if (operation === "y√x") this.operation = "^ 1/";
+        else this.operation = operation;
+
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = '';
     }
 
     calculate() {
@@ -134,10 +138,10 @@ class Calculator {
             case '÷':
                 result = prev / current;
                 break;
-            case 'xy':
+            case '^':
                 result = prev ** current;
                 break
-            case 'y√x':
+            case '^ 1/':
                 if (prev < 0 && current % 2 !== 1) result = NaN;
                 else result = (prev < 0 ? -1 : 1) * Math.pow(Math.abs(prev), 1/current);
                 break
@@ -149,20 +153,13 @@ class Calculator {
 
     getDisplayNumber(number) {
         const strNumber = number.toString();
-        const intDigits = parseFloat(strNumber.split('.')[0]);
+        const intDigits = strNumber.split('.')[0];
         const decDigits = strNumber.split('.')[1];
-        let intDisplay;
-
-        if (isNaN(intDigits)) {
-            intDisplay = ''
-        } else {
-            intDisplay = intDigits.toLocaleString('en', {maximumFractionDigits: 0})
-        }
 
         if (decDigits != null) {
-            return `${intDisplay}.${decDigits}`;
+            return `${intDigits}.${decDigits}`;
         } else {
-            return intDisplay;
+            return intDigits;
         }
     }
 
@@ -177,7 +174,6 @@ class Calculator {
             this.currentOperandElement.innerText = this.currentOperand;
             this.clear();
         } else this.currentOperandElement.innerText = this.getDisplayNumber(this.currentOperand);
-
 
         if (this.operation != null) {
             this.previousOperandElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
